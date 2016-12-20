@@ -38,7 +38,7 @@ GCATAGAGCACACAAGTATGCTTCAGCACAACCTGTGCATGGTCACATAGCCCTTGCTGT
 ### Codes/Documentation
 
 Supported nucleaic acid codes:
-```
+
 | Nucleic Acid Code |	Meaning	| Expanded Definition |
 | --|---|---------|---------------- |
 | A	| A	| Adenine |
@@ -58,7 +58,7 @@ Supported nucleaic acid codes:
 | V	| neither T nor U (i.e. A, C or G) |	|
 | N	| A C G T U	| Nucleic acid |
 | -	| gap of indeterminate length	| |
-```
+
 
 ***
 
