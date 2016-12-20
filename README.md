@@ -65,7 +65,7 @@ Supported nucleaic acid codes:
 Supported amino acid codes:
 
 | Amino Acid Code |	Meaning |
-| -- | -- |
+| --- | --- |
 | A | Alanine |
 | B	| Aspartic acid (D) or Asparagine (N) |
 | C	| Cysteine |
