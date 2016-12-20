@@ -40,7 +40,7 @@ GCATAGAGCACACAAGTATGCTTCAGCACAACCTGTGCATGGTCACATAGCCCTTGCTGT
 Supported nucleaic acid codes:
 
 | Nucleic Acid Code |	Meaning	| Expanded Definition |
-| --|---|---------|---------------- |
+| ---|---|---------|---------------- |
 | A	| A	| Adenine |
 | C	| C	| Cytosine |
 | G	| G	| Guanine |
