@@ -4,8 +4,10 @@ Quality control and filtering of sequencing reads is one of the most important s
 
 An Outline is Below:
 
-  *[FASTA Files](#fasta-files)
-  *[FASTQ Files](#fastq-files)
+  * [FASTA Files](#fasta-files)
+  * [FASTQ Files](#fastq-files)
+
+***
 
 ## FASTA Files
 
@@ -34,8 +36,9 @@ GCATAGAGCACACAAGTATGCTTCAGCACAACCTGTGCATGGTCACATAGCCCTTGCTGT
 ```
 
 ### Codes/Documentation
-Supported nucleaic acid codes:
 
+Supported nucleaic acid codes:
+```
 | Nucleic Acid Code |	Meaning	| Expanded Definition |
 | --|---|---------|---------------- |
 | A	| A	| Adenine |
@@ -55,6 +58,7 @@ Supported nucleaic acid codes:
 | V	| neither T nor U (i.e. A, C or G) |	|
 | N	| A C G T U	| Nucleic acid |
 | -	| gap of indeterminate length	| |
+```
 
 ***
 
