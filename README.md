@@ -313,3 +313,20 @@ gsub fastqc_post_trim_trunc_sample_1.txt
 
 you'll be able to re-analyze your adapter content and see that it is no longer problematic. 
 
+###A Closer Look at Trimmomatic
+
+Let's take a look at the different arguments that can be passed to ```Trimmomamtic``` on the command line.
+
+An example command may look something like this:
+
+```{java} 
+java -jar trimmomatic-0.35.jar PE -phred33 input_forward.fq.gz input_reverse.fq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+```
+
+This will perform the following:
+
+  * Remove specific adapters (ILLUMINACLIP:TruSeq3-PE.fa:2:30:10)
+  * Remove leading low quality or N bases (below quality 3) (LEADING:3)
+  * Remove trailing low quality or N bases (below quality 3) (TRAILING:3)
+  * Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15 (SLIDINGWINDOW:4:15)
+  * Drop reads below the 36 bases long (MINLEN:36)
