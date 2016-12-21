@@ -275,4 +275,15 @@ It should be mentioned that there are number of different ways to encode a quali
 
  You can additionally use information from FastQC to decide whether or not one needs to "trim" the reads at a given base position. 
 
- 
+###Adapter Content
+
+<p align="center">
+<kbd>
+  <img src="fastqc_res_trim.tiff"/>
+ </kbd>
+ </p>
+
+One obvious class of sequences which you might want to analyse are adapter sequences. It is useful to know if your library contains a significant amount of adapter in order to be able to assess whether you need to adapter trim or not. This module therefore does a specific search for a set of separately defined Kmers and will give you a view of the total proportion of your library which contain these Kmers. A results trace will always be generated for all of the sequences present in the adapter config file so you can see the adapter content of your library, even if it's low.
+
+The plot itself shows a cumulative percentage count of the proportion of your library which has seen each of the adapter sequences at each position. Once a sequence has been seen in a read it is counted as being present right through to the end of the read so the percentages you see will only increase as the read length goes on.
+
