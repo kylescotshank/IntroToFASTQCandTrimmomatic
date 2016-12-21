@@ -9,6 +9,7 @@ An Outline is Below:
   * [Phred Scores](#phred-scores)
   * [FastQC](#fastqc)
    * [FastQC Results](#fastqc-results)
+  * [Trimmomatic](#trimmomatic)
 
 ***
 
@@ -228,7 +229,8 @@ Now, run the following command:
 ```
 qsub fastqc_prior_trim_trunc_sample_1.txt
 ```
-This will place several new files into your ```FASTQC_prior_trim_trunc/``` directory. The important one at the moment is http://applbio.mdibl.org/Results/stu00/FASTQC_prior_trim_trunc/sample_1_R1_fastqc.html. Open this file in your web browser. 
+
+This will place several new files into your ```FASTQC_prior_trim_trunc/``` directory. The important one at the moment is [this one](http://applbio.mdibl.org/Results/stu00/FASTQC_prior_trim_trunc/sample_1_R1_fastqc.html). Open this file in your web browser. 
 
 ##FastQC Results
 
@@ -286,4 +288,28 @@ It should be mentioned that there are number of different ways to encode a quali
 One obvious class of sequences which you might want to analyse are adapter sequences. It is useful to know if your library contains a significant amount of adapter in order to be able to assess whether you need to adapter trim or not. This module therefore does a specific search for a set of separately defined Kmers and will give you a view of the total proportion of your library which contain these Kmers. A results trace will always be generated for all of the sequences present in the adapter config file so you can see the adapter content of your library, even if it's low.
 
 The plot itself shows a cumulative percentage count of the proportion of your library which has seen each of the adapter sequences at each position. Once a sequence has been seen in a read it is counted as being present right through to the end of the read so the percentages you see will only increase as the read length goes on.
+
+In situations like the above, we need to trim our reads - a task for which we will use `Trimmomatic`.
+
+***
+
+##Trimmomatic
+
+[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is a powerful tool that performs a variety of useful trimming tasks for illumina paired-end and single ended data.
+
+Use this line at the command line when you are ready:
+
+```
+qsub trimmomatic_trunc_sample_1.txt
+```
+
+This will trim your paired-end reads to remove adapter sequences, placing the new files into ```FASTQ_trimmed_trunc/``` directory. 
+
+Now, if you re-run your FastQC pipeline with the following script:
+
+```
+gsub fastqc_post_trim_trunc_sample_1.txt
+```
+
+you'll be able to re-analyze your adapter content and see that it is no longer problematic. 
 
