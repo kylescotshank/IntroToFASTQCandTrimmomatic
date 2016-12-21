@@ -1,5 +1,12 @@
 # Introduction to Quality Assessment
 
+
+<p align="center">
+<kbd>
+  <img src="quality.jpg"/>
+ </kbd>
+ </p>
+
 Quality control and filtering of sequencing reads is one of the most important steps in a bioinformatics analysis pipeline. However, it is not always trivial to figure out which reads needs adjustment and which can be left untouched. In this tutorial, we explain the basics of the `FASTA` and `FASTQ` file formats, including the Phred score concept, an important quality metric used in a majority of quality control bioinformatics tools such as FASTQC. We also demonstrate how to understand and interpret these quality metrics. We then proceed to show how one can use `Trimmomatic`, a common tool used to remove read fragments when the situation is appropriate. 
 
 An Outline is Below:
@@ -319,7 +326,7 @@ gsub fastqc_post_trim_trunc_sample_1.txt
 
 you'll be able to re-analyze your adapter content and see that it is no longer problematic. 
 
-###A Closer Look at Trimmomatic
+###A Closer Look at Trimmomatic Commands
 
 Let's take a look at the different arguments that can be passed to ```Trimmomatic``` on the command line.
 
@@ -336,4 +343,17 @@ This will perform the following:
   * Remove trailing low quality or N bases (below quality 3) (TRAILING:3)
   * Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15 (SLIDINGWINDOW:4:15)
   * Drop reads below the 36 bases long (MINLEN:36)
+
+Here is a list of the arguments that ```trimmomatic``` can take, along with their meaning:
+
+  * ILLUMINACLIP: Cut adapter and other illumina-specific sequences from the read.
+  * SLIDINGWINDOW: Perform a sliding window trimming, cutting once the average quality within the window falls below a threshold.
+  * LEADING: Cut bases off the start of a read, if below a threshold quality
+  * TRAILING: Cut bases off the end of a read, if below a threshold quality
+  * CROP: Cut the read to a specified length
+  * HEADCROP: Cut the specified number of bases from the start of the read
+  * MINLEN: Drop the read if it is below a specified length
+  * TOPHRED33: Convert quality scores to Phred-33
+  * TOPHRED64: Convert quality scores to Phred-64
+
 
