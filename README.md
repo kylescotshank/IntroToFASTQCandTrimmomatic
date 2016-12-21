@@ -7,6 +7,7 @@ An Outline is Below:
   * [FASTA Files](#fasta-files)
   * [FASTQ Files](#fastq-files)
   * [Phred Scores](#phred-scores)
+  * [FastQC](#fastqc)
 
 ***
 
@@ -127,7 +128,7 @@ The character '!' represents the lowest quality while '~' is the highest. Here a
  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 ```
 
-Note that there are a variety of different *ways* that the above quality value characters are used, depending on the particular scoring metric that is applied. The most commonly seen encoding systems are Sanger “Q + 33” Shift,  Sanger “Q + 33” ASCII GLYPH,  Illumina 1.3+ “Q + 64” Shift, and  Illumina 1.3+ “Q + 64” ASCII GLYPH.
+Note that there are a variety of different *ways* that the above quality value characters are used, depending on the particular scoring metric that is applied. The most commonly seen encoding systems are Sanger “Q + 33” Shift,  Sanger “Q + 33” ASCII GLYPH,  Illumina 1.3+ “Q + 64” Shift, and  Illumina 1.3+ “Q + 64” ASCII GLYPH. You'll notice that the biggest difference between the systems is the "shift" - i.e., whether or not the scoring method is in base 33 or base 64. 
 
 ##Phred Scores
 
@@ -144,3 +145,9 @@ A table of Q-scores (for two different encoding systems) looks like this:
   <img src="qscores.gif"/>
  </kbd>
  </p>
+
+We now have the knowledge that we need to run (and, more importantly, understand!) FastQC.
+
+##FastQC
+
+[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
