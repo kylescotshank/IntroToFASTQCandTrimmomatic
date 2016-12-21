@@ -160,6 +160,8 @@ We've taken the liberty of preparing a set of analysis scripts so that you can l
   * Trim reads using Trimmomatic
   * Examine data quality after trimming using FastQC
 
+The scripts that you create with the following steps will *actually* allow you to do quite a bit more than this, but we will only focus on the actions above. 
+
 ####Step 1:
 
 Login to terminal with assigned user name and password.
@@ -206,6 +208,34 @@ Change directory to /nextgen3/class/Bioinfo/Results/<username>/Scripts. For stu0
 ```
    cd /nextgen3/class/Bioinfo/Results/stu01/Scripts
 ```
+####Step 9:
+
+Once in the “Scripts” directory, the user can submit any of the bash scripts through ```qsub``` command.  The order for job submission is: fastqc_prior, trim, fastqc_post. Please run the jobs in this order. 
+
+***
+
+###Wait, what the heck is ```qsub```?
+
+```qsub``` is the command used for job submission to a Linux cluster. It takes several command line arguments and can also use special directives found in the submission scripts or command file. 
+
+***
+
+###Okay, got it. Keep going.
+
+Now, run the following command:
+
+```
+qsub fastqc_prior_trim_trunc_sample_1.txt
+```
+This will place several new files into your ```FASTQC_prior_trim_trunc/``` directory. The important one at the moment is http://applbio.mdibl.org/Results/stu00/FASTQC_prior_trim_trunc/sample_1_R1_fastqc.html. Open this file in your web browser. 
+
+###FastQC Results
+
+<p align="center">
+<kbd>
+  <img src="fastqc_res_1.tiff"/>
+ </kbd>
+ </p>
 
 
 
