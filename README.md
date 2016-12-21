@@ -8,6 +8,7 @@ An Outline is Below:
   * [FASTQ Files](#fastq-files)
   * [Phred Scores](#phred-scores)
   * [FastQC](#fastqc)
+   * [FastQC Results](#fastqc-results)
 
 ***
 
