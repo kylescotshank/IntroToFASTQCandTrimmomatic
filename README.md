@@ -9,8 +9,6 @@
 
 Quality control and filtering of sequencing reads is one of the most important steps in a bioinformatics analysis pipeline. However, it is not always trivial to figure out which reads needs adjustment and which can be left untouched. In this tutorial, we explain the basics of the `FASTA` and `FASTQ` file formats, including the Phred score concept, an important quality metric used in a majority of quality control bioinformatics tools such as FASTQC. We also demonstrate how to understand and interpret these quality metrics. We then proceed to show how one can use `Trimmomatic`, a common tool used to remove read fragments when the situation is appropriate. 
 
-An Outline is Below:
-
   * [FASTA Files](#fasta-files)
   * [FASTQ Files](#fastq-files)
   * [Phred Scores](#phred-scores)
