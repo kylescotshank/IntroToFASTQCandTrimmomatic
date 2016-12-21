@@ -270,3 +270,9 @@ It should be mentioned that there are number of different ways to encode a quali
   <img src="fastqc_res_bad.tiff"/>
  </kbd>
  </p>
+
+ As you can see above - the sequence quality doesn't just degrade slightly at the end - it's bad through and through! This could be cause to reject this particular sample, once all other factors are taken into account.
+
+ You can additionally use information from FastQC to decide whether or not one needs to "trim" the reads at a given base position. 
+
+ 
