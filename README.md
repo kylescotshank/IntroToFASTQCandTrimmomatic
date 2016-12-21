@@ -150,4 +150,62 @@ We now have the knowledge that we need to run (and, more importantly, understand
 
 ##FastQC
 
-[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control tool for high throughput sequence data created by the Babraham Institute. It's an incredibly useful open-source Java tool that is found in many bioinformatics analysis pipelines. Though you can use an implementation of FastQC in Galaxy, we will focus on how to run it on the command line.
+
+###Getting Started
+
+We've taken the liberty of preparing a set of analysis scripts so that you can learn how to run common RNA-Seq analysis tools on our Linux cluster.  In order for the analysis to finish quickly, we will be using truncated data (only chr16 reads from the four control and four dexa-treated samples). The automated scripts allow you to run the following workflow:
+
+  * Examine data quality prior to trimming using FastQC
+  * Trim reads using Trimmomatic
+  * Examine data quality after trimming using FastQC
+
+####Step 1:
+
+Login to terminal with assigned user name and password.
+```
+   ssh stu01@dirigo.mdibl.org
+```
+
+####Step 2:
+
+Change directory to /nextgen3/class/Bioinfo
+```
+   cd /nextgen3/class/Bioinfo
+```
+
+####Step 3:
+
+Load R (type R at command prompt)
+```
+   R
+```
+
+####Step 4:
+
+Once in R, type: source(“applied_bio_2016_setup.R”)
+```
+   source("applied_bio_2016_setup.R")
+```
+
+####Step 5:
+
+When prompted for username type it and press enter.
+
+####Step 6:
+
+Step 6.) At the confirmation prompt, type yes if it correct, or anything else to reenter the username.  Note: all files and directories will be setup at this point. 
+
+####Step 7:
+
+Quit out of R by typing q() and then entering n to not save the R session.
+
+####Step 8:
+
+Change directory to /nextgen3/class/Bioinfo/Results/<username>/Scripts. For stu01, you would type:
+```
+   cd /nextgen3/class/Bioinfo/Results/stu01/Scripts
+```
+
+
+
