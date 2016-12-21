@@ -295,6 +295,12 @@ In situations like the above, we need to trim our reads - a task for which we wi
 
 ##Trimmomatic
 
+<p align="center">
+<kbd>
+  <img src="multiplex.jpg"/>
+ </kbd>
+ </p>
+
 [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is a powerful tool that performs a variety of useful trimming tasks for illumina paired-end and single ended data.
 
 Use this line at the command line when you are ready:
@@ -315,7 +321,7 @@ you'll be able to re-analyze your adapter content and see that it is no longer p
 
 ###A Closer Look at Trimmomatic
 
-Let's take a look at the different arguments that can be passed to ```Trimmomamtic``` on the command line.
+Let's take a look at the different arguments that can be passed to ```Trimmomatic``` on the command line.
 
 An example command may look something like this:
 
@@ -330,3 +336,4 @@ This will perform the following:
   * Remove trailing low quality or N bases (below quality 3) (TRAILING:3)
   * Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15 (SLIDINGWINDOW:4:15)
   * Drop reads below the 36 bases long (MINLEN:36)
+
