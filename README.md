@@ -3,7 +3,7 @@
 
 <p align="center">
 <kbd>
-  <img src="quality.jpg"/>
+  <img src="Images/quality.jpg"/>
  </kbd>
  </p>
 
@@ -149,7 +149,7 @@ A table of Q-scores (for two different encoding systems) looks like this:
 
 <p align="center">
 <kbd>
-  <img src="qscores.gif"/>
+  <img src="Images/qscores.gif"/>
  </kbd>
  </p>
 
@@ -241,7 +241,7 @@ This will place several new files into your ```FASTQC_prior_trim_trunc/``` direc
 
 <p align="center">
 <kbd>
-  <img src="fastqc_res_1.tiff"/>
+  <img src="Images/fastqc_res_1.tiff"/>
  </kbd>
  </p>
 
@@ -255,7 +255,7 @@ We will leave the assessment of the data on the cluster to you, and instead will
 
 <p align="center">
 <kbd>
-  <img src="fastqc_res_good.tiff"/>
+  <img src="Images/fastqc_res_good.tiff"/>
  </kbd>
  </p>
 
@@ -274,7 +274,7 @@ It should be mentioned that there are number of different ways to encode a quali
 
 <p align="center">
 <kbd>
-  <img src="fastqc_res_bad.tiff"/>
+  <img src="Images/fastqc_res_bad.tiff"/>
  </kbd>
  </p>
 
@@ -286,7 +286,7 @@ It should be mentioned that there are number of different ways to encode a quali
 
 <p align="center">
 <kbd>
-  <img src="fastqc_res_trim.tiff"/>
+  <img src="Images/fastqc_res_trim.tiff"/>
  </kbd>
  </p>
 
@@ -302,7 +302,7 @@ In situations like the above, we need to trim our reads - a task for which we wi
 
 <p align="center">
 <kbd>
-  <img src="multiplex.jpg"/>
+  <img src="Images/multiplex.jpg"/>
  </kbd>
  </p>
 
