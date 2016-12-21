@@ -230,7 +230,7 @@ qsub fastqc_prior_trim_trunc_sample_1.txt
 ```
 This will place several new files into your ```FASTQC_prior_trim_trunc/``` directory. The important one at the moment is http://applbio.mdibl.org/Results/stu00/FASTQC_prior_trim_trunc/sample_1_R1_fastqc.html. Open this file in your web browser. 
 
-###FastQC Results
+##FastQC Results
 
 <p align="center">
 <kbd>
@@ -238,5 +238,35 @@ This will place several new files into your ```FASTQC_prior_trim_trunc/``` direc
  </kbd>
  </p>
 
+The FASTQC report is divided into several sections. For example, you can find general information about number and length of reads in the first section, called, “Basic statistics”. The list of potentially undeleted adapters will be in the section, titled, “overrepresented sequences”. Detailed explanation related to the meaning of, and potential problems with, each section of the FASTQC report can be found on this page. 
 
+You can navigate to the corresponding parts of the report by clicking on the items in the table of contents placed on the left. Each item in the table of contents is marked by a green tick, an orange exclamation mark, or a red cross. A green tick means that this aspect of the data is of satisfactory quality, an orange exclamation mark means that something is slightly abnormal, and a red cross suggests that the corresponding parameter of the source data is very unusual and needs correction. As you can guess, the red crosses are of the greatest interest for us. To improve the quality of our sequencing data, we need to fix the parameters that are marked by red crosses.
 
+We will leave the assessment of the data on the cluster to you, and instead will present below some obvious differences between *good* and *bad* examples of data quality.
+
+###Good Data
+
+<p align="center">
+<kbd>
+  <img src="fastqc_res_good.tiff"/>
+ </kbd>
+ </p>
+
+To summarize this graph: for each base position a "box-and-whisker" type plot is drawn. The elements of the plot are as follows:
+
+  * The central red line is the median value
+  * The yellow box represents the inter-quartile range (25-75%)
+  * The upper and lower whiskers represent the 10% and 90% points
+  * The blue line represents the mean quality
+
+The y-axis on the graph shows the quality scores. The higher the score the better the base call. The background of the graph divides the y axis into very good quality calls (green), calls of reasonable quality (orange), and calls of poor quality (red). The quality of calls on most platforms will degrade as the run progresses, so it is common to see base calls falling into the orange area towards the end of a read.
+
+It should be mentioned that there are number of different ways to encode a quality score in a FastQ file. FastQC attempts to automatically determine which encoding method was used, but in some very limited datasets it is possible that it will guess this incorrectly (ironically only when your data is universally very good!). The title of the graph will describe the encoding FastQC thinks your file used.
+
+###Bad Data
+
+<p align="center">
+<kbd>
+  <img src="fastqc_res_bad.tiff"/>
+ </kbd>
+ </p>
