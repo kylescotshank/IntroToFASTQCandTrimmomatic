@@ -134,9 +134,6 @@ A Phred quality score is a measure of the quality of the identification of the n
 
 The phred quality score, or *Q* value, is defined as a property which is logarithmically related to the base-calling error probabilities P. This involves a bit more statistics than will be covered in this lesson, but the basic formula is:
 
-<p align="center">
-<kbd>
-  <img src="eq1.svg"/>
-</kbd>
-</p>
-
+```
+Q = –10 log<sub>10</sub>(P)
+```
