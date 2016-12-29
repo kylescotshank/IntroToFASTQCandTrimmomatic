@@ -7,7 +7,7 @@
  </kbd>
  </p>
 
-Quality control and filtering of sequencing reads is one of the most important steps in a bioinformatics analysis pipeline. However, it is not always trivial to figure out which reads needs adjustment and which can be left untouched. In this tutorial, we explain the basics of the `FASTA` and `FASTQ` file formats, including the Phred score concept, an important quality metric used in a majority of quality control bioinformatics tools such as FASTQC. We also demonstrate how to understand and interpret these quality metrics. We then proceed to show how one can use `Trimmomatic`, a common tool used to remove read fragments when the situation is appropriate. 
+Quality control and filtering of sequencing reads is one of the most important steps in a sequence analysis pipeline. However, it is not always trivial to figure out which reads needs adjustment and which can be left untouched. In this tutorial, we explain the basics of the `FASTA` and `FASTQ` file formats, including the Phred score concept, an important quality metric used in a majority of quality control bioinformatics tools such as FASTQC. We also demonstrate how to understand and interpret these quality metrics. We then proceed to show how one can use `Trimmomatic`, a common tool used to remove read fragments when the situation is appropriate. 
 
   * [FASTA Files](#fasta-files)
   * [FASTQ Files](#fastq-files)
@@ -20,16 +20,16 @@ Quality control and filtering of sequencing reads is one of the most important s
 
 ##FASTA Files
 
-FASTA format is a text-based format for representing either nucleotide sequences or peptide sequences, in which nucleotides or amino acids are represented using single-letter codes. 
+FASTA format is a text-based format for representing either nucleotide sequences or peptide sequences, in which nucleotides or amino acids are represented using single-letter codes. These codes are from [IUPAC](https://iupac.org). 
 
 A sequence in FASTA format is represented as a series of lines, each of which should be no longer than 120 characters and usually do not exceed 80 characters. Some background: This restriction was probably put into place to allow for preallocation of fixed line sizes in software, as at the time most users relied on terminals which could display 80 or 132 characters per line. Most people preferred the bigger font in 80-character modes and so it became the recommended fashion to use 80 characters or less (often 70) in FASTA lines.
 
-The first line in a FASTA file starts either with a ">" (greater-than) symbol or, less frequently, a ";" (semicolon) and was taken as a comment. Subsequent lines starting with a semicolon would be ignored by software. Since the only comment used was the first, it quickly became used to hold a summary description of the sequence, often starting with a unique library accession number, and with time it has become commonplace use to always use ">" for the first line and to not use ";" comments (which would otherwise be ignored).
+The first line in a FASTA file starts either with a ">" (greater-than) symbol followed by a unique sequence identifier. 
 
 ### Example
 
-Below is an example of the Zebrafish (_Dario Rerio_) reference genome. 
-__Note__: `>` (and less commonly, `;` denote comments - usually summary description of the sequence.)
+Below is an example of the Zebrafish (_Danio Rerio_) reference genome. 
+__Note__: "1" is the sequence identifier for chromosome 1.
 
 ```
 >1 dna:chromosome chromosome:GRCz10:1:1:58871917:1 REF
@@ -46,7 +46,7 @@ GCATAGAGCACACAAGTATGCTTCAGCACAACCTGTGCATGGTCACATAGCCCTTGCTGT
 
 ### Codes/Documentation
 
-Supported nucleaic acid codes:
+Supported nucleic acid codes:
 
 | Nucleic Acid Code |	Meaning	| Expanded Definition |
 | ---|---|---------|---------------- |
@@ -124,7 +124,7 @@ GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 
 To further explain:
 
-  * Line 1 begins with a '@' character and is followed by a sequence identifier and an optional description (like a FASTA title line).
+  * Line 1 begins with a '@' character and is followed by a sequence identifier and an optional description (like a FASTA description).
   * Line 2 is the raw sequence letters.
   * Line 3 begins with a '+' character and is optionally followed by the same sequence identifier (and any description) again.
   * Line 4 encodes the quality values for the sequence in Line 2, and must contain the same number of symbols as letters in the sequence.
@@ -157,11 +157,11 @@ We now have the knowledge that we need to run (and, more importantly, understand
 
 ##FastQC
 
-[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control tool for high throughput sequence data created by the Babraham Institute. It's an incredibly useful open-source Java tool that is found in many bioinformatics analysis pipelines. Though you can use an implementation of FastQC in Galaxy, we will focus on how to run it on the command line.
+[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control tool for high throughput sequence data created by the Babraham Institute. It's an incredibly useful open-source Java tool that is found in many sequence analysis pipelines. Though you can use an implementation of FastQC in Galaxy, we will focus on how to run it on the command line.
 
 ###Getting Started
 
-We've taken the liberty of preparing a set of analysis scripts so that you can learn how to run common RNA-Seq analysis tools on our Linux cluster.  In order for the analysis to finish quickly, we will be using truncated data (only chr16 reads from the four control and four dexa-treated samples). The automated scripts allow you to run the following workflow:
+We've taken the liberty of preparing a set of analysis scripts so that you can learn how to run common RNA-Seq analysis tools on our Linux cluster.  In order for the analysis to finish quickly, we will be using truncated data (only reads that map to chromosome 16). The automated scripts allow you to run the following workflow:
 
   * Examine data quality prior to trimming using FastQC
   * Trim reads using Trimmomatic
@@ -192,9 +192,9 @@ Load R (type R at command prompt)
 
 ####Step 4:
 
-Once in R, type: source(“applied_bio_2016_setup.R”)
+Once in R, type: source(“applied_bio_airways_setup.R”)
 ```
-   source("applied_bio_2016_setup.R")
+   source("applied_bio_airways_setup.R")
 ```
 
 ####Step 5:
@@ -236,6 +236,11 @@ qsub fastqc_prior_trim_trunc_sample_1.txt
 ```
 
 This will place several new files into your ```FASTQC_prior_trim_trunc/``` directory. The important one at the moment is [this one](http://applbio.mdibl.org/Results/stu00/FASTQC_prior_trim_trunc/sample_1_R1_fastqc.html). Open this file in your web browser. 
+
+Some other commands of interest:
+
+  * `qstat`: get information about the current status of the jobs
+  * `qdel`: remove a job from the queue. 
 
 ##FastQC Results
 
@@ -319,7 +324,7 @@ This will trim your paired-end reads to remove adapter sequences, placing the ne
 Now, if you re-run your FastQC pipeline with the following script:
 
 ```
-gsub fastqc_post_trim_trunc_sample_1.txt
+qsub fastqc_post_trim_trunc_sample_1.txt
 ```
 
 you'll be able to re-analyze your adapter content and see that it is no longer problematic. 
